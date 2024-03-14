@@ -19,7 +19,7 @@ const Services = () => {
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
       <ServiceCard title="Website development">
         <p>
-          We create high-performance, fully customizable, and future-proof websites. Our team's websites are coded and developed using industry best practices and cutting-edge technology.
+          We create high-performance, fully customizable, and future-proof websites. Our team&apos;s websites are coded and developed using industry best practices and cutting-edge technology.
         </p>
       </ServiceCard>
       <ServiceCard title="UI & UX services">
@@ -34,7 +34,7 @@ const Services = () => {
       </ServiceCard>
       <ServiceCard title="WordPress development">
         <p>
-          Depending on your company's demands, our skilled WordPress developers may assist you with creating bespoke functionality for your WordPress site, whether it be a customized template or plugin.
+          Depending on your company&apos;s demands, our skilled WordPress developers may assist you with creating bespoke functionality for your WordPress site, whether it be a customized template or plugin.
         </p>
       </ServiceCard>
       <ServiceCard title="Landing page development">
@@ -119,7 +119,7 @@ export default function Home() {
               <CardBody style={{ width: "600px", height: "400px" }}>
                 <div className="text p-8 bg-white rounded-md shadow-lg">
                   <h1 className="text-2xl font-semibold mb-4">
-                    Enhance your website's design to elevate your online
+                    Enhance your website&apos;s design to elevate your online
                     achievements!
                   </h1>
                   <h2 className="text-xl  mb-4">
