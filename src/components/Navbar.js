@@ -3,16 +3,37 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, DropdownItem, D
 import Link from 'next/link';
 
 const NavbarComponent = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState(null);
 
-  const handleMouseEnter = (item) => {
-    setHoveredItem(item);
-    setIsDropdownOpen(true);
+  // const handleMouseEnter = (item) => {
+  //   setHoveredItem(item);
+  //   setIsDropdownOpen(true);
+  // };
+
+  // const handleMouseLeave = () => {  
+  //   setIsDropdownOpen(false);
+  //   setHoveredItem(null);
+  // };
+
+  const [isFeaturesDropdownOpen, setIsFeaturesDropdownOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+
+  const handleFeaturesMouseEnter = () => {
+    setIsFeaturesDropdownOpen(true);
+    setHoveredItem('features');
+    setIsServicesDropdownOpen(false);
   };
 
-  const handleMouseLeave = () => {  
-    setIsDropdownOpen(false);
+  const handleServicesMouseEnter = () => {
+    setIsServicesDropdownOpen(true);
+    setHoveredItem('services');
+    setIsFeaturesDropdownOpen(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsFeaturesDropdownOpen(false);
+    setIsServicesDropdownOpen(false);
     setHoveredItem(null);
   };
 
@@ -22,8 +43,8 @@ const NavbarComponent = () => {
         <Link href="/" className="font-bold text-inherit">CC IT SERVICES</Link>
       </NavbarBrand>
       <NavbarContent justify="center">
-        <Dropdown isOpen={isDropdownOpen} onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
-          <NavbarItem className="relative" onMouseEnter={() => handleMouseEnter('features')} onMouseLeave={handleMouseLeave}>
+        <Dropdown isOpen={isFeaturesDropdownOpen} onMouseEnter={() => handleFeaturesMouseEnter('features')} onMouseLeave={handleMouseLeave}>
+          <NavbarItem className="relative" onMouseEnter={() => handleFeaturesMouseEnter('features')} onMouseLeave={handleMouseLeave}>
             <DropdownTrigger>
               <Button
                 disableRipple
@@ -44,7 +65,7 @@ const NavbarComponent = () => {
             itemClasses={{
               base: "gap-4",
             }}
-            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseEnter={() => handleFeaturesMouseEnter('features')}
             onMouseLeave={handleMouseLeave}
           >
             <DropdownItem
@@ -56,7 +77,7 @@ const NavbarComponent = () => {
             </DropdownItem>
             <DropdownItem
               key="usage_metrics"
-              description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
+              description="Real-time metrics to debug issues. Slow query added? We&apos;ll show you exactly where."
               className="text-black" 
             >
               Usage Metrics
@@ -89,8 +110,8 @@ const NavbarComponent = () => {
             Services
           </Link>
         </NavbarItem> */}
-        <Dropdown isOpen={isDropdownOpen} onMouseEnter={() => setIsDropdownOpen(true)} onMouseLeave={() => setIsDropdownOpen(false)}>
-          <NavbarItem className="relative" onMouseEnter={() => handleMouseEnter('features')} onMouseLeave={handleMouseLeave}>
+        <Dropdown isOpen={isServicesDropdownOpen} onMouseEnter={() => handleServicesMouseEnter('services')} onMouseLeave={handleMouseLeave}>
+          <NavbarItem className="relative" onMouseEnter={() => handleServicesMouseEnter('services')} onMouseLeave={handleMouseLeave}>
             <DropdownTrigger>
               <Button
                 disableRipple
@@ -99,7 +120,7 @@ const NavbarComponent = () => {
                 variant="light"
               >
                 Services
-                {hoveredItem === 'features' && (
+                {hoveredItem === 'services' && (
                   <div className="bg-blue-500 h-1 w-full absolute bottom-0 left-0 transition-transform duration-300 origin-left transform"></div> // Added progress bar with transition
                 )}
               </Button>
@@ -111,26 +132,27 @@ const NavbarComponent = () => {
             itemClasses={{
               base: "gap-4",
             }}
-            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseEnter={() => handleServicesMouseEnter('services')}
             onMouseLeave={handleMouseLeave}
           >
             <DropdownItem key="website-development">
-              <Link href="/website-development">Website Development Services</Link>
+              <Link href="/website-development"
+              className="text-black" >Website Development Services</Link>
             </DropdownItem>
             <DropdownItem key="wordpress-development">
-              <Link href="/wordpress-development">WordPress Development Services</Link>
+              <Link href="/wordpress-development"className="text-black" >WordPress Development Services</Link>
             </DropdownItem>
             <DropdownItem key="e-commerce-development">
-              <Link href="/e-commerce-development">E-commerce Development Services</Link>
+              <Link href="/e-commerce-development"className="text-black" >E-commerce Development Services</Link>
             </DropdownItem>
             <DropdownItem key="content-management">
-              <Link href="/content-management">Content Management Solutions</Link>
+              <Link href="/content-management"className="text-black" >Content Management Solutions</Link>
             </DropdownItem>
             <DropdownItem key="custom-web-app">
-              <Link href="/custom-web-app">Custom Web App Development</Link>
+              <Link href="/custom-web-app"className="text-black" >Custom Web App Development</Link>
             </DropdownItem>
             <DropdownItem key="website-maintenance">
-              <Link href="/website-maintenance">Website Maintenance Services</Link>
+              <Link href="/website-maintenance"className="text-black" >Website Maintenance Services</Link>
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
